@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - TrueSkin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>TrueSkin</h1>
+            <p>Unveiling the Truth in Skincare</p>
+        </div>
+
+        <div class="cart-page">
+            <div class="cart-header">
+                <h2 class="cart-title"> </h2>
+                <a href="/" class="back-to-shop">Continue Shopping</a>
+            </div>
+    </header>
+
+    <div class="cart-page">
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='cart.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+install 
+
+//****************
+
+pip install flask
+
+//****************
+
+then make sure you are on the right folder ie "BT"
+you can navigate to it using "cd BT"
+once you're in use :
+
+//****************
+
+python app.py 
+
+//****************
+
+to run the flask servers and "CTRL + Click" on the http
+
+it is runnig on 
+
+http://127.0.0.1:5000
+
+you can just past this on your browser
+
+to stop the server, you can use "CTRL+C"
