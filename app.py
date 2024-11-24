@@ -148,6 +148,10 @@ def home():
 def cart():
     return render_template('cart.html')
 
+@app.route('/progressTracking')
+def progress_tracking():
+    return render_template('progressTracking.html')
+
 @app.route('/api/products')
 def get_products():
     filter_type = request.args.get('filter', 'all')

@@ -1,108 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TrueSkin - Unveiling the Truth in Skincare</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <h1>TrueSkin</h1>
-                <p>Unveiling the Truth in Skincare</p>
-            </div>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search products...">
-            </div>
+      <div class="header-content">
+        <div class="logo">
+          <h1>TrueSkin</h1>
+          <p>Unveiling the Truth in Skincare</p>
         </div>
-        <div class="cart-icon">
-            <a href="/cart">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <path d="M16 10a4 4 0 0 1-8 0"></path>
-                </svg>
-                <span class="cart-count" id="cartCount">0</span>
-            </a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+          />
+          <a href="{{ url_for('progress_tracking') }}" class="progress-btn">
+            <span>Track Progress</span>
+          </a>
         </div>
-<!-- Toast Notification -->
-<div id="toast" class="toast">
-    <div class="toast-content">
-        <svg class="toast-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 6L9 17l-5-5"/>
-        </svg>
-        <span class="toast-message">Added to cart!</span>
-    </div>
-</div>
+      </div>
+      <!-- Toast Notification -->
+      <div id="toast" class="toast">
+        <div class="toast-content">
+          <svg
+            class="toast-check"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span class="toast-message">Added to cart!</span>
+        </div>
+      </div>
     </header>
 
     <nav class="filter-nav">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="new_grade">New grade</button>
-        <button class="filter-btn" data-filter="trending">Trending</button>
-        <button class="filter-btn" data-filter="hydrating">Hydrating</button>
-        <button class="filter-btn" data-filter="oil_control">Oil control</button>
-        <button class="filter-btn" data-filter="soothing">Soothing</button>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="new_grade">New grade</button>
+      <button class="filter-btn" data-filter="trending">Trending</button>
+      <button class="filter-btn" data-filter="hydrating">Hydrating</button>
+      <button class="filter-btn" data-filter="oil_control">Oil control</button>
+      <button class="filter-btn" data-filter="soothing">Soothing</button>
     </nav>
 
     <main>
-        <div class="products-grid" id="productsContainer">
-            {% for product in products %}
-            <div class="product-card" onclick="openProductModal({{ product|tojson }})">
-                <div class="product-image">
-                    <img src="{{ product.image }}" alt="{{ product.name }}">
-                </div>
-                <div class="product-info">
-                    <span class="brand">{{ product.brand }}</span>
-                    <h2 class="name">{{ product.name }}</h2>
-                    <p class="price">${{ "%.2f"|format(product.price) }}</p>
-                    <p class="description">{{ product.description }}</p>
-                    <div class="tags">
-                        {% for category in product.categories %}
-                        <span class="tag">{{ category.replace('_', ' ') }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
+      <div class="products-grid" id="productsContainer">
+        {% for product in products %}
+        <div
+          class="product-card"
+          onclick="openProductModal({{ product|tojson }})"
+        >
+          <div class="product-image">
+            <img src="{{ product.image }}" alt="{{ product.name }}" />
+          </div>
+          <div class="product-info">
+            <span class="brand">{{ product.brand }}</span>
+            <h2 class="name">{{ product.name }}</h2>
+            <p class="price">${{ "%.2f"|format(product.price) }}</p>
+            <p class="description">{{ product.description }}</p>
+            <div class="tags">
+              {% for category in product.categories %}
+              <span class="tag">{{ category.replace('_', ' ') }}</span>
+              {% endfor %}
             </div>
-            {% endfor %}
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </main>
 
     <!-- Product Modal -->
     <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div class="modal-product-content">
-                <div class="modal-left">
-                    <div class="modal-image">
-                        <img src="" alt="" id="modalImage">
-                    </div>
-                </div>
-                <div class="modal-right">
-                    <span class="modal-brand" id="modalBrand"></span>
-                    <h2 class="modal-name" id="modalName"></h2>
-                    <p class="modal-price" id="modalPrice"></p>
-                    <div class="modal-tags" id="modalTags"></div>
-                    <div class="modal-description">
-                        <h3>Description</h3>
-                        <p id="modalDescription"></p>
-                    </div>
-                    <div class="modal-ingredients">
-                        <h3>Key Benefits</h3>
-                        <ul id="modalBenefits">
-                        </ul>
-                    </div>
-                    <div class="modal-actions">
-                        <button class="btn-add-cart">Add to Cart</button>
-                        <button class="btn-buy-now">Buy Now</button>
-                    </div>
-                </div>
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-product-content">
+          <div class="modal-left">
+            <div class="modal-image">
+              <img src="" alt="" id="modalImage" />
             </div>
+          </div>
+          <div class="modal-right">
+            <span class="modal-brand" id="modalBrand"></span>
+            <h2 class="modal-name" id="modalName"></h2>
+            <p class="modal-price" id="modalPrice"></p>
+            <div class="modal-tags" id="modalTags"></div>
+            <div class="modal-description">
+              <h3>Description</h3>
+              <p id="modalDescription"></p>
+            </div>
+            <div class="modal-ingredients">
+              <h3>Key Benefits</h3>
+              <ul id="modalBenefits"></ul>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+  </body>
 </html>

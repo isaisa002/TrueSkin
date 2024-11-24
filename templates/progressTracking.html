@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Tracking - TrueSkin</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; position: relative;">
+        <div class="return-button" style="position: absolute; left: 20px;">
+            <a href="/" class="back-to-home">Back to Homepage</a>
+        </div>
+        <div class="logo" style="text-align: center; margin: 0 auto;">
+            <h1>TrueSkin</h1>
+            <p>Unveiling the Truth in Skincare</p>
+        </div>
+    </header>
+
+    <main>
+      <div class="upload-container">
+        <h2>Upload Your Progress Picture</h2>
+        <form method="post" enctype="multipart/form-data" id="uploadForm">
+          <div id="dropbox" class="dropbox">
+            <p>Drag & Drop your image here or click to upload</p>
+            <input
+              type="file"
+              name="progressPicture"
+              accept="image/*"
+              id="fileInput"
+              required
+            />
+          </div>
+        </form>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Initial Stage</h3>
+                <p>Start of your skincare journey.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Progress 1</h3>
+                <p id="currentDate2"></p>
+                <img src="{{ url_for('static', filename='images/progress1.png') }}" id="previewImage2" class="preview-image" />
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Progress 2</h3>
+                <p id="currentDate1"></p>
+                <img src="{{ url_for('static', filename='images/progress2.png') }}" id="previewImage1" class="preview-image"/>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Progress 3</h3>
+                <p id="currentDate"></p>
+                <img id="previewImage" class="preview-image" style="display: none" />
+            </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+        const dropbox = document.getElementById("dropbox");
+        const fileInput = document.getElementById("fileInput");
+        const previewImage = document.getElementById("previewImage");
+        const previewImage1 = document.getElementById("previewImage1");
+        const previewImage2 = document.getElementById("previewImage2");
+        const currentDate = document.getElementById("currentDate");
+        const currentDate1 = document.getElementById("currentDate1");
+        const currentDate2 = document.getElementById("currentDate2");
+
+        // Display current date
+        const today = new Date();
+        currentDate.textContent = `Date: ${today.toLocaleDateString()}`;
+
+        // Display date for one week ago
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(today.getDate() - 7);
+        currentDate1.textContent = `Date: ${oneWeekAgo.toLocaleDateString()}`;
+
+        // Display date for two weeks ago
+        const twoWeeksAgo = new Date();
+        twoWeeksAgo.setDate(today.getDate() - 14);
+        currentDate2.textContent = `Date: ${twoWeeksAgo.toLocaleDateString()}`;
+
+      dropbox.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            previewImage.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
+</html>
