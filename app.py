@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ products = [
             "Strengthens skin barrier",
             "Safe for fungal acne-prone skin"
         ],
-        "reviews" : [
+         "reviews" : [
             {"name" : "Anna", "rating": 5, "comment": "I recently added a centella serum to my skincare routine, and it’s been a game-changer for my sensitive skin. The scent is light and natural, making it pleasant to use without any overpowering fragrance. It’s easy to use and it absorbs quickly." },
             {"name" : "Rebecca", "rating" : 4, "comment":"I can say that this works for sensitive, oily, acne prone skin, and also to other types. Those particularly are my skin type, and this ampoule worked wonders on my face. " },
             {"name" : "Meagan", "rating" : 4, "comment": "Received this product 2 days ago. My makeup that evening was better, my face felt so much better and after that nighttime facial cleanse that same night, I am not gonna lie, my skin looked so clean and shiny & not in an oily way"}
@@ -42,7 +42,6 @@ products = [
             {"name" : "Grace", "rating" : 4, "comment":" Good, but I like the CIca Recovery cream better" },
             {"name" : "Ashley", "rating" : 2, "comment": " Not the best for REALLY dry skin"}
         ]
-        
     },
       {
         "id": 5,
@@ -63,7 +62,6 @@ products = [
             {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
             {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
         ]
-
     },
       {
         "id": 5,
@@ -199,6 +197,8 @@ def cart():
 @app.route('/progressTracking')
 def progress_tracking():
     return render_template('progressTracking.html')
+
+
 
 @app.route('/api/products')
 def get_products():

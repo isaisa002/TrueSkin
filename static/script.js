@@ -1,62 +1,69 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const productsContainer = document.getElementById('productsContainer');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const modal = document.getElementById('productModal');
-    const closeBtn = document.querySelector('.close-btn');
-    
-    let currentFilter = 'all';
-    let currentSearch = '';
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const productsContainer = document.getElementById("productsContainer");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const modal = document.getElementById("productModal");
+  const closeBtn = document.querySelector(".close-btn");
 
-    // Filter button click handlers
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            currentFilter = button.dataset.filter;
-            updateProducts();
-        });
+  let currentFilter = "all";
+  let currentSearch = "";
+
+  // Filter button click handlers
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+      currentFilter = button.dataset.filter;
+      updateProducts();
+    });
+  });
+
+  // Search input handler
+  searchInput.addEventListener(
+    "input",
+    debounce(() => {
+      currentSearch = searchInput.value;
+      updateProducts();
+    }, 300)
+  );
+
+  // Close modal when clicking the close button
+  closeBtn.onclick = function () {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  };
+
+  // Close modal when clicking outside
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  };
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  function updateProducts() {
+    const queryParams = new URLSearchParams({
+      filter: currentFilter,
+      search: currentSearch,
     });
 
-    // Search input handler
-    searchInput.addEventListener('input', debounce(() => {
-        currentSearch = searchInput.value;
-        updateProducts();
-    }, 300));
-
-    // Close modal when clicking the close button
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-    }
-
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-    }
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-    });
-
-    function updateProducts() {
-        const queryParams = new URLSearchParams({
-            filter: currentFilter,
-            search: currentSearch
-        });
-
-        fetch(`/api/products?${queryParams}`)
-            .then(response => response.json())
-            .then(products => {
-                productsContainer.innerHTML = products.map(product => `
-                    <div class="product-card" onclick="openProductModal(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+    fetch(`/api/products?${queryParams}`)
+      .then((response) => response.json())
+      .then((products) => {
+        productsContainer.innerHTML = products
+          .map(
+            (product) => `
+                    <div class="product-card" onclick="openProductModal(${JSON.stringify(
+                      product
+                    ).replace(/"/g, "&quot;")})">
                         <div class="product-image">
                             <img src="${product.image}" alt="${product.name}">
                         </div>
@@ -66,296 +73,193 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p class="price">$${product.price.toFixed(2)}</p>
                             <p class="description">${product.description}</p>
                             <div class="tags">
-                                ${product.categories.map(category => 
-                                    `<span class="tag">${category.replace('_', ' ')}</span>`
-                                ).join('')}
+                                ${product.categories
+                                  .map(
+                                    (category) =>
+                                      `<span class="tag">${category.replace(
+                                        "_",
+                                        " "
+                                      )}</span>`
+                                  )
+                                  .join("")}
                             </div>
                         </div>
                     </div>
-                `).join('');
-            });
-    }
+                `
+          )
+          .join("");
+      });
+  }
 
-
-//-------------- cart -----------
-function showToast() {
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    
-    // Hide toast after 2 seconds
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 2000);
-}
-
-// Update your add to cart function
-document.querySelector('.btn-add-cart').addEventListener('click', function(e) {
-    e.stopPropagation();
-    const product = {
-        id: parseInt(document.querySelector('#modalName').dataset.productId),
-        name: document.querySelector('#modalName').textContent,
-        brand: document.querySelector('#modalBrand').textContent,
-        price: parseFloat(document.querySelector('#modalPrice').textContent.replace('$', '')),
-        image: document.querySelector('#modalImage').src
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func.apply(this, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
     };
-    addToCart(product, false);
-    showToast();
-});
+  }
 
-// Update your addToCart function to include the toast
-function addToCart(product, redirect = false) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Update cart count
-    const countElement = document.getElementById('cartCount');
-    countElement.textContent = cart.length;
-    
-    // Animate cart icon if not redirecting
-    if (!redirect) {
-        const cartIcon = document.querySelector('.cart-icon');
-        cartIcon.classList.add('pop');
-        setTimeout(() => cartIcon.classList.remove('pop'), 300);
-        
-        // Show toast notification
-        showToast();
-    }
-
-    // Close modal
-    document.getElementById('productModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-
-    // Redirect to cart if requested
-    if (redirect) {
-        window.location.href = '/cart';
-    }
-}
-
-//buy now button has an issue** 
-document.querySelector('.btn-buy-now').addEventListener('click', function(e) {
-    e.stopPropagation();
-    const product = {
-        id: parseInt(document.querySelector('#modalName').dataset.productId),
-        name: document.querySelector('#modalName').textContent,
-        brand: document.querySelector('#modalBrand').textContent,
-        price: parseFloat(document.querySelector('#modalPrice').textContent.replace('$', '')),
-        image: document.querySelector('#modalImage').src
-    };
-    addToCart(product, true);  // true flag triggers redirect to cart
-});
-
-// Add this to your DOMContentLoaded event handler
-document.addEventListener('DOMContentLoaded', function() {
-    // ... your existing code ...
-    
-    // Initialize cart count
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const countElement = document.getElementById('cartCount');
-    countElement.textContent = cart.length;
-});
-
-//-------------------------
-
-
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func.apply(this, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // Initial load
-    updateProducts();
+  // Initial load
+  updateProducts();
 });
 
 // Product modal handler
 function openProductModal(product) {
-    const modal = document.getElementById('productModal');
-    
-    // Update modal content
-    document.getElementById('modalImage').src = product.image;
-    document.getElementById('modalImage').alt = product.name;
-    document.getElementById('modalBrand').textContent = product.brand;
-    document.getElementById('modalName').textContent = product.name;
-    document.getElementById('modalPrice').textContent = `$${product.price.toFixed(2)}`;
-    document.getElementById('modalDescription').textContent = product.description;
-    
-    // Update tags
-    document.getElementById('modalTags').innerHTML = product.categories
-        .map(category => `<span class="tag">${category.replace('_', ' ')}</span>`)
-        .join('');
-    
-    // Update benefits
-    document.getElementById('modalBenefits').innerHTML = product.benefits
-        ? product.benefits.map(benefit => `<li>${benefit}</li>`).join('')
-        : '<li>Product benefits not available</li>';
-    
-    // Show modal
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // Prevent background scrolling
-}
+  const modal = document.getElementById("productModal");
 
+  // Update modal content
+  document.getElementById("modalImage").src = product.image;
+  document.getElementById("modalImage").alt = product.name;
+  document.getElementById("modalBrand").textContent = product.brand;
+  document.getElementById("modalName").textContent = product.name;
+  document.getElementById("modalPrice").textContent = `$${product.price.toFixed(
+    2
+  )}`;
+  document.getElementById("modalDescription").textContent = product.description;
+
+  // Update tags
+  document.getElementById("modalTags").innerHTML = product.categories
+    .map((category) => `<span class="tag">${category.replace("_", " ")}</span>`)
+    .join("");
+
+  // Update benefits
+  document.getElementById("modalBenefits").innerHTML = product.benefits
+    ? product.benefits.map((benefit) => `<li>${benefit}</li>`).join("")
+    : "<li>Product benefits not available</li>";
+
+  // Show modal
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden"; // Prevent background scrolling
+}
 
 // Update the checkout function in cart.js
 function checkout() {
-    if (cart.length === 0) {
-        return;
-    }
-    window.location.href = '/checkout';  // Or wherever your checkout page is
+  if (cart.length === 0) {
+    return;
+  }
+  window.location.href = "/checkout"; // Or wherever your checkout page is
 }
-
-// Update the button click handlers in script.js
-document.querySelector('.btn-buy-now').addEventListener('click', function(e) {
-    e.stopPropagation();
-    const product = {
-        id: parseInt(document.querySelector('#modalName').dataset.productId),
-        name: document.querySelector('#modalName').textContent,
-        brand: document.querySelector('#modalBrand').textContent,
-        price: parseFloat(document.querySelector('#modalPrice').textContent.replace('$', '')),
-        image: document.querySelector('#modalImage').src
-    };
-    
-    // Just add to cart and redirect without any alert
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Update cart count
-    const countElement = document.getElementById('cartCount');
-    if (countElement) {
-        countElement.textContent = cart.length;
-    }
-    
-    // Close modal
-    document.getElementById('productModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-    
-    // Redirect immediately
-    window.location.href = '/cart';
-
- 
-});
 
 // Open and display the reviews on porduct modal
 
-// Get element of product 
+// Get element of product
 function openProductModal(product) {
-    //save the current product so can add the added rating
-    window.current_product = product;
+  //save the current product so can add the added rating
+  window.current_product = product;
 
-    document.getElementById("modalImage").src = product.image;
-    document.getElementById("modalBrand").textContent = product.brand;
-    document.getElementById("modalName").textContent = product.name;
-    document.getElementById("modalPrice").textContent = `$${product.price.toFixed(2)}`;
-    document.getElementById("modalDescription").textContent = product.description;
-    
-    //tags
-    const tags_container = document.getElementById("modalTags");
-    tags_container.innerHTML = ""; // Clear existing tags
-    product.categories.forEach(tag => {
-      const tag_element = document.createElement("span");
-      tag_element.className = "tag";
-      tag_element.textContent = tag.replace("_", " ");
-      tags_container.appendChild(tag_element);
-    });
-  
-    //benifits
-    const benefits_container = document.getElementById("modalBenefits");
-    benefits_container.innerHTML = ""; // Clear existing benefits
-    product.benefits.forEach(benefit => {
-      const benefitItem = document.createElement("li");
-      benefitItem.textContent = benefit;
-      benefits_container.appendChild(benefitItem);
-    });
-  
-    // average of ratings
-    const average_container = document.getElementById("modalAverageRating");
-    if (product.reviews && product.reviews.length > 0) {
-      const totalRating = product.reviews.reduce((sum, review) => sum + review.rating, 0);
-      const averageRating = totalRating / product.reviews.length;
-      average_container.innerHTML = `
+  document.getElementById("modalImage").src = product.image;
+  document.getElementById("modalBrand").textContent = product.brand;
+  document.getElementById("modalName").textContent = product.name;
+  document.getElementById("modalPrice").textContent = `$${product.price.toFixed(
+    2
+  )}`;
+  document.getElementById("modalDescription").textContent = product.description;
+
+  //tags
+  const tags_container = document.getElementById("modalTags");
+  tags_container.innerHTML = ""; // Clear existing tags
+  product.categories.forEach((tag) => {
+    const tag_element = document.createElement("span");
+    tag_element.className = "tag";
+    tag_element.textContent = tag.replace("_", " ");
+    tags_container.appendChild(tag_element);
+  });
+
+  //benifits
+  const benefits_container = document.getElementById("modalBenefits");
+  benefits_container.innerHTML = ""; // Clear existing benefits
+  product.benefits.forEach((benefit) => {
+    const benefitItem = document.createElement("li");
+    benefitItem.textContent = benefit;
+    benefits_container.appendChild(benefitItem);
+  });
+
+  // average of ratings
+  const average_container = document.getElementById("modalAverageRating");
+  if (product.reviews && product.reviews.length > 0) {
+    const totalRating = product.reviews.reduce(
+      (sum, review) => sum + review.rating,
+      0
+    );
+    const averageRating = totalRating / product.reviews.length;
+    average_container.innerHTML = `
         ${"⭐".repeat(Math.floor(averageRating))} 
         (${averageRating.toFixed(1)} / 5)
       `;
-    } else {
-      average_container.innerHTML = "No reviews available for this product yet.";
-    }
-  
-    const modal = document.getElementById("productModal");
-    modal.style.display = "block";
-  
-    // view more button 
-    const viewMoreButton = document.getElementById("viewMoreReviews");
-    viewMoreButton.onclick = () => openReviewsPopup(product);
+  } else {
+    average_container.innerHTML = "No reviews available for this product yet.";
   }
-  
-  // open the review pop up 
-  function openReviewsPopup(product) {
-    const reviewsList = document.getElementById("allReviewsList");
-    reviewsList.innerHTML = ""; // Clear existing reviews
-  
-    if (product.reviews && product.reviews.length > 0) {
-      product.reviews.forEach(review => {
-        const reviewItem = document.createElement("li");
-        reviewItem.innerHTML = `
+
+  const modal = document.getElementById("productModal");
+  modal.style.display = "block";
+
+  // view more button
+  const viewMoreButton = document.getElementById("viewMoreReviews");
+  viewMoreButton.onclick = () => openReviewsPopup(product);
+}
+
+// open the review pop up
+function openReviewsPopup(product) {
+  const reviewsList = document.getElementById("allReviewsList");
+  reviewsList.innerHTML = ""; // Clear existing reviews
+
+  if (product.reviews && product.reviews.length > 0) {
+    product.reviews.forEach((review) => {
+      const reviewItem = document.createElement("li");
+      reviewItem.innerHTML = `
           <strong>${review.name}</strong> - ${"⭐".repeat(review.rating)}
           <p>${review.comment}</p>
         `;
-        reviewsList.appendChild(reviewItem);
-      });
-    } else {
-      reviewsList.innerHTML = "<li>No reviews available for this product.</li>";
-    }
-    const reviewsModal = document.getElementById("reviewsModal");
-    reviewsModal.style.display = "block";
+      reviewsList.appendChild(reviewItem);
+    });
+  } else {
+    reviewsList.innerHTML = "<li>No reviews available for this product.</li>";
   }
-    document.getElementById("closeReviewsModal").onclick = function () {
-    document.getElementById("reviewsModal").style.display = "none";
-  };
-    document.querySelector(".close-btn").onclick = function () {
-    document.getElementById("productModal").style.display = "none";
-  };
-  
+  const reviewsModal = document.getElementById("reviewsModal");
+  reviewsModal.style.display = "block";
+}
+document.getElementById("closeReviewsModal").onclick = function () {
+  document.getElementById("reviewsModal").style.display = "none";
+};
+document.querySelector(".close-btn").onclick = function () {
+  document.getElementById("productModal").style.display = "none";
+};
 
 // Add a review
 document.getElementById("addReviewButton").addEventListener("click", () => {
-    document.getElementById("addReviewModal").style.display = "block";
-  });
-  document.getElementById("closeAddReviewModal").addEventListener("click", () => {
-    document.getElementById("addReviewModal").style.display = "none";
-  });
-  
-  // Form for review
-  document.getElementById("addReviewForm").addEventListener("submit", (event) => {
-    //prevent refresh
-    event.preventDefault(); 
-    const name = document.getElementById("reviewerName").value;
-    const rating = parseInt(document.getElementById("reviewRating").value);
-    const comment = document.getElementById("reviewComment").value;
+  document.getElementById("addReviewModal").style.display = "block";
+});
+document.getElementById("closeAddReviewModal").addEventListener("click", () => {
+  document.getElementById("addReviewModal").style.display = "none";
+});
 
-    //if no input need to write all the fields
-    if (!name || !rating || !comment) {
-      alert("Please fill all the necessary fields");
-      return;
-    }
-  
-    //add the review to the current product
-    const currentProduct = window.current_product; 
-    if (currentProduct) {
-      currentProduct.reviews.push({ name, rating, comment });
-      openProductModal(currentProduct);
-      document.getElementById("addReviewModal").style.display = "none";
-      //clear field when added
-      document.getElementById("addReviewForm").reset();
-    } else {
-      alert("An error occurred. Please try again...");
-    }
-  });
-  
+// Form for review
+document.getElementById("addReviewForm").addEventListener("submit", (event) => {
+  //prevent refresh
+  event.preventDefault();
+  const name = document.getElementById("reviewerName").value;
+  const rating = parseInt(document.getElementById("reviewRating").value);
+  const comment = document.getElementById("reviewComment").value;
+
+  //if no input need to write all the fields
+  if (!name || !rating || !comment) {
+    alert("Please fill all the necessary fields");
+    return;
+  }
+
+  //add the review to the current product
+  const currentProduct = window.current_product;
+  if (currentProduct) {
+    currentProduct.reviews.push({ name, rating, comment });
+    openProductModal(currentProduct);
+    document.getElementById("addReviewModal").style.display = "none";
+    //clear field when added
+    document.getElementById("addReviewForm").reset();
+  } else {
+    alert("An error occurred. Please try again...");
+  }
+});
