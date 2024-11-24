@@ -25,6 +25,9 @@
           <a href="{{ url_for('progress_tracking') }}" class="progress-btn">
             <span>Track Progress</span>
           </a>
+          <a href="{{ url_for('compare_products') }}" class="compare-btn">
+            <span>Compare Products</span>
+        </a>
         </div>
       </div>
       <!-- Toast Notification -->
@@ -102,6 +105,11 @@
             <div class="modal-ingredients">
               <h3>Key Benefits</h3>
               <ul id="modalBenefits"></ul>
+            </div>
+
+            <div class="review-summary">
+              <h3>Transparency Rating</h3>
+              <p id="transparencyRating"></p>
             </div>
 
             <div class="review-summary">

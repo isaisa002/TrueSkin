@@ -178,6 +178,13 @@ function openProductModal(product) {
     benefits_container.appendChild(benefitItem);
   });
 
+  //transparency rating
+  const transparency_container = document.getElementById("transparencyRating");
+  transparency_container.innerHTML = `
+        ${"♻️".repeat(Math.floor(product.transparency))} 
+        (${product.transparency.toFixed(1)} / 5)
+      `;
+
   // average of ratings
   const average_container = document.getElementById("modalAverageRating");
   if (product.reviews && product.reviews.length > 0) {

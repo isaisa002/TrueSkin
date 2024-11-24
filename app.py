@@ -21,7 +21,8 @@ products = [
             {"name" : "Anna", "rating": 5, "comment": "I recently added a centella serum to my skincare routine, and it’s been a game-changer for my sensitive skin. The scent is light and natural, making it pleasant to use without any overpowering fragrance. It’s easy to use and it absorbs quickly." },
             {"name" : "Rebecca", "rating" : 4, "comment":"I can say that this works for sensitive, oily, acne prone skin, and also to other types. Those particularly are my skin type, and this ampoule worked wonders on my face. " },
             {"name" : "Meagan", "rating" : 4, "comment": "Received this product 2 days ago. My makeup that evening was better, my face felt so much better and after that nighttime facial cleanse that same night, I am not gonna lie, my skin looked so clean and shiny & not in an oily way"}
-        ]
+        ],
+        "transparency": 4
     },
     {
         "id": 2,
@@ -41,7 +42,8 @@ products = [
             {"name" : "Isabelle", "rating": 5, "comment": "So I have VERY sensative combination skin, and I am VERY fungal acne prone, so naturally finding a good moisturizer has been a struggle. But THIS STUFF IS MY HOLY GRAIL!!" },
             {"name" : "Grace", "rating" : 4, "comment":" Good, but I like the CIca Recovery cream better" },
             {"name" : "Ashley", "rating" : 2, "comment": " Not the best for REALLY dry skin"}
-        ]
+        ],
+        "transparency": 3
     },
       {
         "id": 5,
@@ -61,7 +63,8 @@ products = [
             {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
             {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
             {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ]
+        ],
+        "transparency": 3
     },
       {
         "id": 5,
@@ -81,7 +84,8 @@ products = [
             {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
             {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
             {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ]
+        ],
+        "transparency": 3
         
     },
       {
@@ -102,7 +106,8 @@ products = [
             {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
             {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
             {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ]
+        ],
+        "transparency": 2
     },
     {
         "id": 3,
@@ -122,7 +127,8 @@ products = [
             {"name" : "Anna", "rating": 3, "comment": "This stuff is a bit sticky. Overall I do like it." },
             {"name" : "Isabelle", "rating" : 4, "comment":" Really nice product, it leaves my skin glowing for a long period of time" },
             {"name" : "Grace", "rating" : 5, "comment": " I use this every day and it's made a huge difference in my skin! It's hydrating and my sensitive skin doesn't react to it. My skin glows now and my pores seem smaller. A must have!"}
-        ]
+        ],
+        "transparency": 4
     },
     {
         "id": 4,
@@ -142,7 +148,8 @@ products = [
             {"name" : "Liliane", "rating": 4, "comment": "I love that it comes with a pump! 1 or 2  pumps and you're good to go. It's super fresh,ligh and lotion-like emulsion." },
             {"name" : "Irwin", "rating" : 4, "comment":" Really nice product, it's my go to cream as i don't like scents" },
             {"name" : "Taylor", "rating" : 5, "comment": " I've been using this face cream for a few weeks now and I'm truly Impressed! The texture is light and aborbs quicly, leaving no greasy residue. It's perfect for both morning and night time use"}
-        ]
+        ],
+        "transparency": 5
     },
     {
         "id": 5,
@@ -162,7 +169,8 @@ products = [
             {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
             {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
             {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ]
+        ],
+        "transparency": 3
     },
     {
         "id": 6,
@@ -183,6 +191,8 @@ products = [
             {"name" : "Rebecca", "rating" : 5, "comment":" Great for first time users of salicylic acid! Extremely gentle on the skin and does not irritate" },
             {"name" : "Alice", "rating" : 5, "comment": " My all time faveorite. I have been using it since 2020 and always worked very well with my oily and sensitive skin"}
         ]
+        ,
+        "transparency": 4
     }
 ]
 
@@ -198,7 +208,9 @@ def cart():
 def progress_tracking():
     return render_template('progressTracking.html')
 
-
+@app.route('/compareProducts')
+def compare_products():
+    return render_template('compare.html')
 
 @app.route('/api/products')
 def get_products():
