@@ -105,6 +105,7 @@ document.querySelector('.btn-add-cart').addEventListener('click', function(e) {
 // Update your addToCart function to include the toast
 function addToCart(product, redirect = false) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
     cart.push(product);
     localStorage.setItem('cart', JSON.stringify(cart));
     
@@ -132,6 +133,7 @@ function addToCart(product, redirect = false) {
     }
 }
 
+//buy now button has an issue** 
 document.querySelector('.btn-buy-now').addEventListener('click', function(e) {
     e.stopPropagation();
     const product = {
@@ -237,4 +239,123 @@ document.querySelector('.btn-buy-now').addEventListener('click', function(e) {
     
     // Redirect immediately
     window.location.href = '/cart';
+
+ 
 });
+
+// Open and display the reviews on porduct modal
+
+// Get element of product 
+function openProductModal(product) {
+    //save the current product so can add the added rating
+    window.current_product = product;
+
+    document.getElementById("modalImage").src = product.image;
+    document.getElementById("modalBrand").textContent = product.brand;
+    document.getElementById("modalName").textContent = product.name;
+    document.getElementById("modalPrice").textContent = `$${product.price.toFixed(2)}`;
+    document.getElementById("modalDescription").textContent = product.description;
+    
+    //tags
+    const tags_container = document.getElementById("modalTags");
+    tags_container.innerHTML = ""; // Clear existing tags
+    product.categories.forEach(tag => {
+      const tag_element = document.createElement("span");
+      tag_element.className = "tag";
+      tag_element.textContent = tag.replace("_", " ");
+      tags_container.appendChild(tag_element);
+    });
+  
+    //benifits
+    const benefits_container = document.getElementById("modalBenefits");
+    benefits_container.innerHTML = ""; // Clear existing benefits
+    product.benefits.forEach(benefit => {
+      const benefitItem = document.createElement("li");
+      benefitItem.textContent = benefit;
+      benefits_container.appendChild(benefitItem);
+    });
+  
+    // average of ratings
+    const average_container = document.getElementById("modalAverageRating");
+    if (product.reviews && product.reviews.length > 0) {
+      const totalRating = product.reviews.reduce((sum, review) => sum + review.rating, 0);
+      const averageRating = totalRating / product.reviews.length;
+      average_container.innerHTML = `
+        ${"⭐".repeat(Math.floor(averageRating))} 
+        (${averageRating.toFixed(1)} / 5)
+      `;
+    } else {
+      average_container.innerHTML = "No reviews available for this product yet.";
+    }
+  
+    const modal = document.getElementById("productModal");
+    modal.style.display = "block";
+  
+    // view more button 
+    const viewMoreButton = document.getElementById("viewMoreReviews");
+    viewMoreButton.onclick = () => openReviewsPopup(product);
+  }
+  
+  // open the review pop up 
+  function openReviewsPopup(product) {
+    const reviewsList = document.getElementById("allReviewsList");
+    reviewsList.innerHTML = ""; // Clear existing reviews
+  
+    if (product.reviews && product.reviews.length > 0) {
+      product.reviews.forEach(review => {
+        const reviewItem = document.createElement("li");
+        reviewItem.innerHTML = `
+          <strong>${review.name}</strong> - ${"⭐".repeat(review.rating)}
+          <p>${review.comment}</p>
+        `;
+        reviewsList.appendChild(reviewItem);
+      });
+    } else {
+      reviewsList.innerHTML = "<li>No reviews available for this product.</li>";
+    }
+    const reviewsModal = document.getElementById("reviewsModal");
+    reviewsModal.style.display = "block";
+  }
+    document.getElementById("closeReviewsModal").onclick = function () {
+    document.getElementById("reviewsModal").style.display = "none";
+  };
+    document.querySelector(".close-btn").onclick = function () {
+    document.getElementById("productModal").style.display = "none";
+  };
+  
+
+// Add a review
+document.getElementById("addReviewButton").addEventListener("click", () => {
+    document.getElementById("addReviewModal").style.display = "block";
+  });
+  document.getElementById("closeAddReviewModal").addEventListener("click", () => {
+    document.getElementById("addReviewModal").style.display = "none";
+  });
+  
+  // Form for review
+  document.getElementById("addReviewForm").addEventListener("submit", (event) => {
+    //prevent refresh
+    event.preventDefault(); 
+    const name = document.getElementById("reviewerName").value;
+    const rating = parseInt(document.getElementById("reviewRating").value);
+    const comment = document.getElementById("reviewComment").value;
+
+    //if no input need to write all the fields
+    if (!name || !rating || !comment) {
+      alert("Please fill all the necessary fields");
+      return;
+    }
+  
+    //add the review to the current product
+    const currentProduct = window.current_product; 
+    if (currentProduct) {
+      currentProduct.reviews.push({ name, rating, comment });
+      openProductModal(currentProduct);
+      document.getElementById("addReviewModal").style.display = "none";
+      //clear field when added
+      document.getElementById("addReviewForm").reset();
+    } else {
+      alert("An error occurred. Please try again...");
+    }
+  });
+  

@@ -206,6 +206,33 @@ header {
     position: relative;
     padding: 2rem;
 }
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+.btn-submit-review {
+    background-color: #f7bfbf;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.btn-submit-review:hover {
+    background-color: #f59c9c;
+  }
 
 .close-btn {
     position: absolute;
@@ -253,9 +280,76 @@ header {
 .modal-right {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-}
+    gap: 1.5rem; 
+    align-items: flex-start; 
+  }
+  
 
+.modal-reviews-aligned {
+    width: 100%; 
+    text-align: left; 
+  }
+  
+.modal-reviews-aligned h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+.modal-reviews-aligned p {
+    margin-bottom: 1rem; 
+  }
+  
+.btn-view-reviews {
+    background-color: #f7bfbf; 
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+.btn-submit-review {
+    background-color: #f7bfbf; 
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.review-buttons {
+    display: flex; 
+    gap: 1rem; 
+    flex-wrap: nowrap; 
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+.modal-reviews-container {
+    width: 100%; 
+    text-align: left; 
+  }
+.btn-add-review {
+
+    background-color: #f7bfbf; 
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.btn-add-review:hover {
+    background-color: #f59c9c; 
+}
+  
+.btn-submit-review:hover {
+    background-color: #f59c9c; 
+
+}
+.btn-view-reviews:hover {
+    background-color: #f59c9c; 
+  }
+  
 .modal-brand {
     color: var(--color-primary);
     font-weight: 600;
@@ -494,7 +588,6 @@ header {
     justify-content: center;
     font-size: 0.8rem;
 }
-
 
 
 
@@ -737,4 +830,28 @@ header {
     to {
         transform: translateX(150%);
     }
+}
+
+.review-summary {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    gap: 0.5rem;
+
+}
+
+.stars {
+    font-size: 1rem;
+    color: gold;
+}
+
+.btn-view-reviews {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
 }
