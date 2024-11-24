@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Tracking - TrueSkin</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <h1>TrueSkin</h1>
+          <p>Unveiling the Truth in Skincare</p>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products or ingredients..."
+          />
+        </div>
+        <div class="return-button" style="position: absolute; left: 20px">
+          <a href="/" class="back-to-home">Back to Homepage</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="ingredient-dictionary">
+        <div id="ingredientsList">
+          <!-- Ingredient cards will be displayed here dynamically -->
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Sample ingredients dictionary (similar to SkinSort)
+      const ingredientsDictionary = {
+        "Aloe Vera": {
+          description:
+            "Aloe Vera is known for its soothing properties, often used in skincare for hydration and healing.",
+          uses: ["Hydrating", "Soothing", "Anti-inflammatory"],
+        },
+        Retinol: {
+          description:
+            "Retinol is a form of Vitamin A, popular in anti-aging products for its ability to reduce wrinkles and fine lines.",
+          uses: ["Anti-aging", "Wrinkle reduction", "Skin renewal"],
+        },
+        "Vitamin C": {
+          description:
+            "Vitamin C is an antioxidant that helps brighten skin and reduce the appearance of dark spots.",
+          uses: ["Brightening", "Antioxidant", "Anti-aging"],
+        },
+        "Salicylic Acid": {
+          description:
+            "Salicylic Acid is a beta-hydroxy acid (BHA) used to exfoliate skin and clear acne.",
+          uses: ["Acne treatment", "Exfoliation", "Deep cleaning"],
+        },
+        "Hyaluronic Acid": {
+          description:
+            "Hyaluronic Acid is a naturally occurring substance in the body that helps retain moisture and keep skin plump.",
+          uses: ["Hydration", "Plumping", "Anti-aging"],
+        },
+        Niacinamide: {
+          description:
+            "Niacinamide, also known as Vitamin B3, is known for its ability to reduce inflammation, even skin tone, and enhance skin barrier function.",
+          uses: ["Brightening", "Anti-inflammatory", "Pore minimization"],
+        },
+        "Tea Tree Oil": {
+          description:
+            "Tea Tree Oil is known for its natural antiseptic properties, often used for treating acne and other skin conditions.",
+          uses: ["Acne treatment", "Antiseptic", "Anti-inflammatory"],
+        },
+        "Glycolic Acid": {
+          description:
+            "Glycolic Acid is an alpha-hydroxy acid (AHA) used to exfoliate the skin by breaking down dead skin cells.",
+          uses: ["Exfoliation", "Brightening", "Skin texture improvement"],
+        },
+        Caffeine: {
+          description:
+            "Caffeine is often used in skincare products for its ability to reduce puffiness, tighten the skin, and improve circulation.",
+          uses: ["Anti-puffiness", "Firming", "Circulation boosting"],
+        },
+        "Zinc Oxide": {
+          description:
+            "Zinc Oxide is a mineral used for its sun protection properties and its ability to calm and protect the skin.",
+          uses: ["Sun protection", "Calming", "Wound healing"],
+        },
+        "Shea Butter": {
+          description:
+            "Shea Butter is a natural fat extracted from the nuts of the shea tree, known for its moisturizing and healing properties.",
+          uses: ["Moisturizing", "Healing", "Anti-inflammatory"],
+        },
+        "Lactic Acid": {
+          description:
+            "Lactic Acid is an alpha-hydroxy acid (AHA) that helps exfoliate the skin and improve texture while promoting hydration.",
+          uses: ["Exfoliation", "Hydration", "Skin texture improvement"],
+        },
+        Chamomile: {
+          description:
+            "Chamomile is known for its calming and soothing properties, often used to reduce skin irritation and redness.",
+          uses: ["Soothing", "Anti-inflammatory", "Redness reduction"],
+        },
+        "Jojoba Oil": {
+          description:
+            "Jojoba Oil is a natural oil derived from the seeds of the jojoba plant, known for its moisturizing and skin-balancing properties.",
+          uses: ["Moisturizing", "Skin balancing", "Anti-inflammatory"],
+        },
+        "Witch Hazel": {
+          description:
+            "Witch Hazel is an astringent plant extract commonly used for its skin-toning, anti-inflammatory, and acne-fighting benefits.",
+          uses: ["Toning", "Acne treatment", "Anti-inflammatory"],
+        },
+      };
+
+      // Function to display ingredients in square cards
+      const ingredientsList = document.getElementById("ingredientsList");
+      const searchInput = document.getElementById("searchInput");
+
+      function displayIngredients(ingredients) {
+        ingredientsList.innerHTML = "";
+        Object.keys(ingredients).forEach((ingredient) => {
+          const ingredientElement = document.createElement("div");
+          ingredientElement.classList.add("ingredient-card");
+
+          // Inline styles for squared cards
+          ingredientElement.style.cssText = `
+              width: 25%;
+              height: 100%;
+              margin: 10px;
+              padding: 15px;
+              border: 2px solid #ddd;
+              border-radius: 10px;
+              text-align: center;
+              display: inline-block;
+              vertical-align: top;
+              background-color: #f9f9f9;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            `;
+
+          ingredientElement.innerHTML = `
+              <h3>${ingredient}</h3>
+              <p><strong>Description:</strong> ${
+                ingredients[ingredient].description
+              }</p>
+              <div class="uses"><strong>Uses:</strong> ${ingredients[
+                ingredient
+              ].uses.join(", ")}</div>
+            `;
+          ingredientsList.appendChild(ingredientElement);
+        });
+      }
+
+      // Display all ingredients initially
+      displayIngredients(ingredientsDictionary);
+
+      // Filter ingredients based on search input
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const filteredIngredients = Object.keys(ingredientsDictionary)
+          .filter((ingredient) => ingredient.toLowerCase().includes(query))
+          .reduce((obj, key) => {
+            obj[key] = ingredientsDictionary[key];
+            return obj;
+          }, {});
+        displayIngredients(filteredIngredients);
+      });
+    </script>
+  </body>
+</html>

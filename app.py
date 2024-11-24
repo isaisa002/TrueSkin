@@ -212,6 +212,10 @@ def progress_tracking():
 def compare_products():
     return render_template('compare.html')
 
+@app.route('/ingredients')
+def learn_ingredients():
+    return render_template('ingredient.html')
+
 @app.route('/api/products')
 def get_products():
     filter_type = request.args.get('filter', 'all')

@@ -729,47 +729,43 @@ header {
   cursor: pointer;
 }
 
-/*Compare Page styles*/
 .compare-btn {
   background-color: var(--color-tertiary);
   color: white;
   padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-left: 10px; /* Add some space between buttons */
-}
-
-.comparison-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  margin: 20px;
-}
-
-.product-comparison {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+  margin-right: 10px;
 }
 
-.product-comparison img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.compare-btn:hover {
+  background-color: var(--color-primary);
+}
+.ingredient-btn {
+  background-color: var(--color-tertiary);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+  margin-right: 10px;
 }
 
-.product-comparison h3 {
-  margin-bottom: 10px;
+.ingredient-btn:hover {
+  background-color: var(--color-primary);
 }
-
-.product-comparison p {
-  margin: 5px 0;
+#ingredient-dictionary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
 }
