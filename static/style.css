@@ -1,9 +1,9 @@
 :root {
-  --color-primary: #ffb6c1;
-  --color-secondary: #ffc0cb;
-  --color-tertiary: #ffd1dc;
-  --color-background: #fff5f5;
-  --color-text: #2c3e50;
+  --color-primary: #1e4533;
+  --color-secondary: #51b788;
+  --color-tertiary: #6dbfb8;
+  --color-background: #eeeeee;
+  --color-text: #14080e;
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
