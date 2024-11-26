@@ -10,15 +10,18 @@
     />
   </head>
   <body>
-    <header>
-      <div class="header-content">
-        <div class="logo">
-          <h1>TrueSkin</h1>
-          <p>Unveiling the Truth in Skincare</p>
+    <div class="header-content">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo-img" />
+        <div class="title-text">
+        <h1>TrueSkin</h1>
+        <p>Unveiling the Truth in Skincare</p>
         </div>
-        <div class="return-button" style="position: absolute; left: 20px">
-          <a href="/" class="back-to-home">Back to Homepage</a>
-        </div>
+      </div>
+      <div class="return-button" style="position: absolute; left: 20px">
+        <a href="/" class="back-to-home">Back</a>
+      </div>
+
       </div>
     </header>
   </body>
