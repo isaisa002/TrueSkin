@@ -3,26 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Progress Tracking - TrueSkin</title>
+    <title>Compare Products - TrueSkin</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
   </head>
   <body>
-    <div class="header-content">
-      <div class="logo">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo-img" />
-        <div class="title-text">
-        <h1>TrueSkin</h1>
-        <p>Unveiling the Truth in Skincare</p>
+    <header>
+      <div class="back-button">
+        <a href="/" class="back-btn">Back</a>
+      </div>
+      <div class="header-content">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Logo"
+            class="logo-img"
+          />
+          <div class="title-text">
+            <h1>TrueSkin</h1>
+            <p>Unveiling the Truth in Skincare</p>
+          </div>
         </div>
       </div>
-      <div class="return-button" style="position: absolute; left: 20px">
-        <a href="/" class="back-to-home">Back</a>
+    </header>
+
+    <div class="comparison-container">
+      <div class="comparison-section">
+        <div class="product-search">
+          <div class="search-box">
+            <div class="search-container">
+              <input
+                type="text"
+                class="search-input"
+                id="search1"
+                placeholder="Search first product..."
+              />
+              <button class="dropdown-btn" id="dropdown1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="search-results" id="results1"></div>
+        </div>
+        <div class="comparison-box" id="product1"></div>
       </div>
 
+      <div class="comparison-section">
+        <div class="product-search">
+          <div class="search-box">
+            <div class="search-container">
+              <input
+                type="text"
+                class="search-input"
+                id="search2"
+                placeholder="Search second product..."
+              />
+              <button class="dropdown-btn" id="dropdown2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="search-results" id="results2"></div>
+        </div>
+        <div class="comparison-box" id="product2"></div>
       </div>
-    </header>
+    </div>
+
+    <script src="{{ url_for('static', filename='compare.js') }}"></script>
   </body>
 </html>
