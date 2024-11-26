@@ -10,7 +10,7 @@ products = [
         "price": 19.99,
         "description": "Vegan and cruelty-free ampoule that contains 7 ingredients.",
         "categories": ["new_grade", "fungal_acne_safe", "reef_safe"],
-        "image": "/static/images/1.jpg",
+        "image": "/static/images/oat.jpg",
         "benefits": [
             "Helps calm and soothe sensitive skin",
             "Provides deep hydration",
@@ -31,7 +31,7 @@ products = [
         "price": 16.99,
         "description": "Gentle moisturizer suitable for sensitive skin",
         "categories": ["hydrating", "sensitive_skin_safe"],
-        "image": "/static/images/oat.jpg",
+        "image": "/static/images/1.jpg",
         "benefits": [
             "Gentle and non-irritating formula",
             "Suitable for sensitive skin",
@@ -45,70 +45,6 @@ products = [
         ],
         "transparency": 3
     },
-      {
-        "id": 5,
-        "brand": "BEAUTY OF JOSEON",
-        "name": "Glow Serum",
-        "price": 17.99,
-        "description": "Propolis and niacinamide brightening serum",
-        "categories": ["hydrating", "new_grade"],
-        "image": "/static/images/4.jpg",
-        "benefits": [
-            "Brightens skin tone",
-            "Improves skin texture",
-            "Anti-inflammatory properties",
-            "Enhances natural glow"
-        ],
-        "reviews" : [
-            {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
-            {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
-            {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ],
-        "transparency": 3
-    },
-      {
-        "id": 5,
-        "brand": "BEAUTY OF JOSEON",
-        "name": "Glow Serum",
-        "price": 17.99,
-        "description": "Propolis and niacinamide brightening serum",
-        "categories": ["hydrating", "new_grade"],
-        "image": "/static/images/6.jpg",
-        "benefits": [
-            "Brightens skin tone",
-            "Improves skin texture",
-            "Anti-inflammatory properties",
-            "Enhances natural glow"
-        ],
-        "reviews" : [
-            {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
-            {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
-            {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ],
-        "transparency": 3
-        
-    },
-      {
-        "id": 5,
-        "brand": "BEAUTY OF JOSEON",
-        "name": "Glow Serum",
-        "price": 17.99,
-        "description": "Propolis and niacinamide brightening serum",
-        "categories": ["hydrating", "new_grade"],
-        "image": "/static/images/7.jpg",
-        "benefits": [
-            "Brightens skin tone",
-            "Improves skin texture",
-            "Anti-inflammatory properties",
-            "Enhances natural glow"
-        ],
-        "reviews" : [
-            {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
-            {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
-            {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ],
-        "transparency": 2
-    },
     {
         "id": 3,
         "brand": "COSRX",
@@ -116,7 +52,7 @@ products = [
         "price": 19.99,
         "description": "Hydrating essence with snail secretion filtrate",
         "categories": ["oil_control", "trending"],
-        "image": "/static/images/8.jpg",
+        "image": "/static/images/2.jpg",
         "benefits": [
             "Intensive hydration",
             "Helps repair skin barrier",
@@ -130,70 +66,205 @@ products = [
         ],
         "transparency": 4
     },
+  {
+    "id": 4,
+    "brand": "Anua",
+    "name": "Heartleaf 77% Soothing Toner",
+    "price": 19.99,
+    "description": "Calming and hydrating toner with 77% Heartleaf extract for sensitive skin",
+    "categories": ["hydration", "soothing", "trending"],
+    "image": "/static/images/3.jpg",
+    "benefits": [
+        "Calms redness and irritation",
+        "Hydrates and soothes skin",
+        "Non-sticky, lightweight texture",
+        "Supports skin's natural barrier"
+    ],
+    "reviews": [
+        {
+            "name": "Sarah",
+            "rating": 5,
+            "comment": "This toner is a game changer for my sensitive skin! It's so calming and refreshing."
+        },
+        {
+            "name": "Jin",
+            "rating": 4,
+            "comment": "I like the lightweight texture and how quickly it absorbs. Great for layering."
+        },
+        {
+            "name": "Amara",
+            "rating": 5,
+            "comment": "I use this toner daily, and it has significantly reduced redness on my cheeks. Highly recommend!"
+        }
+    ],
+    "transparency": 4
+},
     {
-        "id": 4,
-        "brand": "ISNTREE",
-        "name": "Green Tea Fresh Emulsion",
-        "price": 22.99,
-        "description": "Light moisturizer for oily skin types",
-        "categories": ["oil_control", "trending"],
-        "image": "/static/images/3.jpg",
-        "benefits": [
-            "Controls excess sebum",
-            "Lightweight formula",
-            "Antioxidant protection",
-            "Mattifying effect"
-        ],
-        "reviews" : [
-            {"name" : "Liliane", "rating": 4, "comment": "I love that it comes with a pump! 1 or 2  pumps and you're good to go. It's super fresh,ligh and lotion-like emulsion." },
-            {"name" : "Irwin", "rating" : 4, "comment":" Really nice product, it's my go to cream as i don't like scents" },
-            {"name" : "Taylor", "rating" : 5, "comment": " I've been using this face cream for a few weeks now and I'm truly Impressed! The texture is light and aborbs quicly, leaving no greasy residue. It's perfect for both morning and night time use"}
-        ],
-        "transparency": 5
-    },
-    {
-        "id": 5,
-        "brand": "BEAUTY OF JOSEON",
-        "name": "Glow Serum",
-        "price": 17.99,
-        "description": "Propolis and niacinamide brightening serum",
-        "categories": ["hydrating", "new_grade"],
-        "image": "/static/images/4.jpg",
-        "benefits": [
-            "Brightens skin tone",
-            "Improves skin texture",
-            "Anti-inflammatory properties",
-            "Enhances natural glow"
-        ],
-        "reviews" : [
-            {"name" : "Janet", "rating": 1, "comment": "If you have fungal acne please avoid this use tea tree instead" },
-            {"name" : "Thao", "rating" : 4, "comment":" Super glow love it. My all time favourite" },
-            {"name" : "Sandra", "rating" : 5, "comment": " I love this and I love how it made my skin feel"}
-        ],
-        "transparency": 3
-    },
-    {
-        "id": 6,
-        "brand": "BENTON",
-        "name": "Aloe BHA Skin Toner",
-        "price": 17.99,
-        "description": "Gentle exfoliating toner with aloe",
-        "categories": ["oil_control", "soothing"],
-        "image": "/static/images/5.jpg",
-        "benefits": [
-            "Gentle exfoliation",
-            "Soothes irritated skin",
-            "Hydrating properties",
-            "Improves skin texture"
-        ],
-        "reviews" : [
-            {"name" : "Fatoumata", "rating": 2, "comment": "It didn't work on my rosacea sensitive skin. " },
-            {"name" : "Rebecca", "rating" : 5, "comment":" Great for first time users of salicylic acid! Extremely gentle on the skin and does not irritate" },
-            {"name" : "Alice", "rating" : 5, "comment": " My all time faveorite. I have been using it since 2020 and always worked very well with my oily and sensitive skin"}
-        ]
-        ,
-        "transparency": 4
-    }
+    "id": 5,
+    "brand": "The Ordinary",
+    "name": "Niacinamide 10% + Zinc 1%",
+    "price": 6.50,
+    "description": "High-strength vitamin and mineral formula to reduce the appearance of blemishes and congestion",
+    "categories": ["oil_control", "brightening", "trending"],
+    "image": "/static/images/4.jpg",
+    "benefits": [
+        "Regulates sebum production",
+        "Minimizes appearance of pores",
+        "Reduces redness and blemishes",
+        "Brightens skin tone"
+    ],
+    "reviews": [
+        {
+            "name": "Emma",
+            "rating": 5,
+            "comment": "I've been using this for months, and it's made a noticeable difference in my skin texture and oil control."
+        },
+        {
+            "name": "Liam",
+            "rating": 4,
+            "comment": "Great product for the price. It helps with my blemishes, but it can feel a bit sticky."
+        },
+        {
+            "name": "Sophia",
+            "rating": 5,
+            "comment": "My holy grail! It has helped reduce the redness and keeps my skin smooth."
+        }
+    ],
+    "transparency": 5
+},
+   {
+    "id": 6,
+    "brand": "Bioderma",
+    "name": "Sensibio H2O Micellar Water",
+    "price": 14.99,
+    "description": "Gentle cleansing and makeup removing micellar water for sensitive skin",
+    "categories": ["cleansing", "sensitive_skin", "trending"],
+    "image": "/static/images/5.jpg",
+    "benefits": [
+        "Removes makeup and impurities",
+        "Soothes sensitive skin",
+        "No-rinse formula",
+        "Maintains skin's natural balance"
+    ],
+    "reviews": [
+        {
+            "name": "Alice",
+            "rating": 5,
+            "comment": "This is my go-to makeup remover! It's gentle and doesn't irritate my skin."
+        },
+        {
+            "name": "Mark",
+            "rating": 4,
+            "comment": "Cleanses well without any greasy residue. Great for everyday use."
+        },
+        {
+            "name": "Sophie",
+            "rating": 5,
+            "comment": "Perfect for my sensitive skin. Leaves my face feeling fresh and clean!"
+        }
+    ],
+    "transparency": 4
+},   {
+    "id": 7,
+    "brand": "Beauty of Joseon",
+    "name": "Glow Serum: Propolis + Niacinamide",
+    "price": 17.99,
+    "description": "Brightening and soothing serum enriched with propolis and niacinamide for radiant skin",
+    "categories": ["brightening", "hydration", "trending"],
+    "image": "/static/images/9.jpg",
+    "benefits": [
+        "Brightens dull skin",
+        "Soothes irritation",
+        "Hydrates and nourishes",
+        "Improves skin texture"
+    ],
+    "reviews": [
+        {
+            "name": "Evelyn",
+            "rating": 5,
+            "comment": "This serum has transformed my skin! It gives me such a healthy glow without feeling heavy."
+        },
+        {
+            "name": "Ryan",
+            "rating": 4,
+            "comment": "I like how hydrating it is, and it absorbs well. My skin feels smoother after just a few uses."
+        },
+        {
+            "name": "Isabella",
+            "rating": 5,
+            "comment": "Love this product! The niacinamide has helped even out my skin tone, and the propolis is so soothing."
+        }
+    ],
+    "transparency": 3
+},
+   {
+    "id": 8,
+    "brand": "I'm From",
+    "name": "Mugwort Essence",
+    "price": 38.00,
+    "description": "A soothing and hydrating essence made with 100% mugwort extract to calm and nourish sensitive skin",
+    "categories": ["soothing", "hydration", "sensitive_skin"],
+    "image": "/static/images/6.jpg",
+    "benefits": [
+        "Calms redness and irritation",
+        "Deeply hydrates the skin",
+        "Improves skin texture",
+        "Rich in antioxidants"
+    ],
+    "reviews": [
+        {
+            "name": "Olivia",
+            "rating": 5,
+            "comment": "This essence is a lifesaver for my sensitive skin. It's so calming and absorbs beautifully."
+        },
+        {
+            "name": "Daniel",
+            "rating": 4,
+            "comment": "I love how natural and gentle this feels. It works great as part of my hydration routine."
+        },
+        {
+            "name": "Emily",
+            "rating": 5,
+            "comment": "I've noticed such an improvement in my skin texture! Perfect for anyone with redness or irritation."
+        }
+    ],
+    "transparency": 2
+},
+      {
+    "id": 7,
+    "brand": "La Roche-Posay",
+    "name": "Cicaplast Baume B5",
+    "price": 14.99,
+    "description": "A multi-purpose soothing balm that calms, protects, and repairs dry, irritated, and sensitive skin",
+    "categories": ["soothing", "repairing", "sensitive_skin"],
+    "image": "/static/images/7.jpg",
+    "benefits": [
+        "Repairs and protects the skin barrier",
+        "Soothes irritation and redness",
+        "Non-greasy and fast-absorbing",
+        "Suitable for the whole family, including babies"
+    ],
+    "reviews": [
+        {
+            "name": "James",
+            "rating": 5,
+            "comment": "This balm is amazing for dry patches and irritation. It’s a staple in my skincare routine."
+        },
+        {
+            "name": "Hannah",
+            "rating": 5,
+            "comment": "Super versatile! I use it on my face and hands, especially during winter. Highly recommend."
+        },
+        {
+            "name": "Ethan",
+            "rating": 4,
+            "comment": "Great for soothing redness, but it takes a bit longer to absorb than I expected."
+        }
+    ],
+    "transparency": 3
+}
+
+    
 ]
 
 @app.route('/')
