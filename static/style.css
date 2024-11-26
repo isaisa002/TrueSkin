@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: "Valky Font", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Times new roman";
   background-color: var(--color-background);
   color: var(--color-text);
 }
@@ -889,39 +889,39 @@ header {
 }
 
 .comparison-box ul {
-list-style-position: inside;
-padding-left: 0;
-margin: 0;
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0;
 }
 
 .comparison-box li {
-padding: 0.25rem 0;
-text-wrap: wrap;
-overflow-wrap: break-word;
-word-break: break-word;
-line-height: 1.4;
-margin-bottom: 0.5rem;
+  padding: 0.25rem 0;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
 }
 
 .product-detail ul {
-padding-left: 1rem;
+  padding-left: 1rem;
 }
 
 .back-button {
-position: absolute;
-top: 20px;
-left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .back-btn {
-background-color: var(--color-secondary);
-color: white;
-padding: 8px 16px;
-border-radius: 20px;
-text-decoration: none;
-font-size: 14px;
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .back-btn:hover {
-background-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
