@@ -26,7 +26,9 @@ products = [
          "reviews" : [
             {"name" : "Anna", "rating": 5, "comment": "I recently added a centella serum to my skincare routine, and it’s been a game-changer for my sensitive skin. The scent is light and natural, making it pleasant to use without any overpowering fragrance. It’s easy to use and it absorbs quickly." },
             {"name" : "Rebecca", "rating" : 4, "comment":"I can say that this works for sensitive, oily, acne prone skin, and also to other types. Those particularly are my skin type, and this ampoule worked wonders on my face. " },
-            {"name" : "Meagan", "rating" : 4, "comment": "Received this product 2 days ago. My makeup that evening was better, my face felt so much better and after that nighttime facial cleanse that same night, I am not gonna lie, my skin looked so clean and shiny & not in an oily way"}
+            {"name" : "Meagan", "rating" : 4, "comment": "Received this product 2 days ago. My makeup that evening was better, my face felt so much better and after that nighttime facial cleanse that same night, I am not gonna lie, my skin looked so clean and shiny & not in an oily way"},
+            {"name" : "Jessica", "rating" : 2, "comment": "Madagascar Centella Ampoule is praised for its calming, hydrating, and anti-inflammatory benefits. However, the ingredients list is very simple for its price. Others products offer more for less."}
+
         ],
         "transparency": 4
     },

@@ -130,32 +130,90 @@
     </div>
 
 
-<!-- Add Review Modal -->
-<div id="addReviewModal" class="modal">
-  <div class="modal-content">
-    <span id="closeAddReviewModal" class="close-btn">&times;</span>
-    <h3>Add a Review</h3>
-    <form id="addReviewForm">
-      <label for="reviewerName">Name:</label>
-      <input type="text" id="reviewerName" name="reviewerName" placeholder="Enter your name" required />
 
-      <label for="reviewRating">Rating:</label>
-      <select id="reviewRating" name="reviewRating" required>
-        <option value="">Select a rating</option>
-        <option value="1">1 - Poor</option>
-        <option value="2">2 - Fair</option>
-        <option value="3">3 - Good</option>
-        <option value="4">4 - Very Good</option>
-        <option value="5">5 - Excellent</option>
-      </select>
+   <!-- Add Review Modal -->
+   <div id="addReviewModal" class="modal">
+    <div class="modal-content">
+      <span id="closeAddReviewModal" class="close-btn">&times;</span>
+      <h3>Add a Review</h3>
+      <form id="addReviewForm">
+        <label for="reviewerName">Name:</label>
+        <input
+          type="text"
+          id="reviewerName"
+          name="reviewerName"
+          placeholder="Enter your name"
+          required
+        />
 
-      <label for="reviewComment">Comment:</label>
-      <textarea id="reviewComment" name="reviewComment" placeholder="Write your review" rows="4" required></textarea>
+        <div class="expert-checkbox-container">
+          <input
+            type="checkbox"
+            id="isExpert"
+            name="isExpert"
+            onclick="toggleMedicalNumber()"
+          />
+          <label for="isExpert">I'm an expert</label>
+        </div>
 
-      <button type="submit" class="btn-submit-review">Submit Review</button>
-    </form>
+        <div id="medicalNumberContainer" style="display: none;">
+          <label for="medicalNumber">Medical Number:</label>
+          <input
+            type="text"
+            id="medicalNumber"
+            name="medicalNumber"
+            placeholder="Enter your medical number"
+          />
+        </div>
+
+        <label for="reviewRating" style="margin-top: 15px;">Rating:</label>
+        <select id="reviewRating" name="reviewRating" required>
+          <option value="">Select a rating</option>
+          <option value="1">1 - Poor</option>
+          <option value="2">2 - Fair</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very Good</option>
+          <option value="5">5 - Excellent</option>
+        </select>
+
+        <label for="reviewComment" style="margin-top: 15px;">Comment:</label>
+        <textarea
+          id="reviewComment"
+          name="reviewComment"
+          placeholder="Write your review"
+          rows="4"
+          required
+        ></textarea>
+
+        <button
+          type="submit"
+          class="btn-submit-review"
+          style="margin-top: 15px;"
+        >
+          Submit Review
+        </button>
+      </form>
+    </div>
   </div>
 
+  <!-- Toggle Medical Number Script -->
+  <script>
+    function toggleMedicalNumber() {
+      const medicalNumberContainer = document.getElementById(
+        "medicalNumberContainer"
+      );
+      const isExpert = document.getElementById("isExpert");
+      if (isExpert.checked) {
+        medicalNumberContainer.style.display = "block";
+        document
+          .getElementById("medicalNumber")
+          .setAttribute("required", "true");
+      } else {
+        medicalNumberContainer.style.display = "none";
+        document.getElementById("medicalNumber").removeAttribute("required");
+      }
+    }
+  </script>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
