@@ -26,21 +26,18 @@ header {
   box-shadow: var(--shadow);
 }
 
-/* Align logo and text inline */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Space between the image and text */
+  gap: 0.5rem;
 }
 
-/* Resize and style the logo image */
 .logo-img {
   width: 120px; /* Adjust size for smaller logo */
   height: auto; /* Maintain aspect ratio */
   object-fit: contain; /* Ensure the logo fits well */
 }
 
-/* Style for the title text */
 .title-text {
   display: flex;
   flex-direction: column; /* Stack the title and subtitle */
@@ -80,6 +77,33 @@ header {
 #searchInput:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.2);
+}
+
+/* Ingredients pop up style for medical expert*/
+.expert-checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between label and checkbox */
+}
+
+.expert-checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.expert-checkbox-container label {
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+/* Display logo for medical expert reviews */
+
+.expert-badge img {
+  width: 20px; /* Adjust size of the logo */
+  height: 20px;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-radius: 50%; /* Optional: makes the image circular */
 }
 
 /* PRogress Tracket Styles*/

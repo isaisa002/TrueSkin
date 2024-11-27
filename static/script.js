@@ -260,27 +260,61 @@ document.getElementById("closeAddReviewModal").addEventListener("click", () => {
 
 // Form for review
 document.getElementById("addReviewForm").addEventListener("submit", (event) => {
-  //prevent refresh
+  // Prevent refresh
   event.preventDefault();
   const name = document.getElementById("reviewerName").value;
   const rating = parseInt(document.getElementById("reviewRating").value);
   const comment = document.getElementById("reviewComment").value;
+  const isExpert = document.getElementById("isExpert").checked; // Check if "I'm an expert" is selected
 
-  //if no input need to write all the fields
+  // Validate fields
   if (!name || !rating || !comment) {
     alert("Please fill all the necessary fields");
     return;
   }
 
-  //add the review to the current product
+  // Add the review to the current product
   const currentProduct = window.current_product;
   if (currentProduct) {
-    currentProduct.reviews.push({ name, rating, comment });
+    currentProduct.reviews.push({ name, rating, comment, isExpert });
+
+    // Update the modal with the new review
     openProductModal(currentProduct);
+
+    // Close and reset the form
     document.getElementById("addReviewModal").style.display = "none";
-    //clear field when added
     document.getElementById("addReviewForm").reset();
+    document.getElementById("medicalNumberContainer").style.display = "none";
   } else {
     alert("An error occurred. Please try again...");
   }
 });
+
+// Update review display logic to include the expert badge/logo
+function openReviewsPopup(product) {
+  const reviewsList = document.getElementById("allReviewsList");
+  reviewsList.innerHTML = ""; // Clear existing reviews
+
+  if (product.reviews && product.reviews.length > 0) {
+    product.reviews.forEach((review) => {
+      const reviewItem = document.createElement("li");
+      reviewItem.innerHTML = `
+        <strong>
+          ${review.name}
+          ${review.isExpert ? " ✅" : ""} <!-- Add emoji for experts -->
+        </strong> - ${"⭐".repeat(review.rating)}
+        <p>${review.comment}</p>
+      `;
+      reviewsList.appendChild(reviewItem);
+    });
+  } else {
+    reviewsList.innerHTML = "<li>No reviews available for this product.</li>";
+  }
+
+  const reviewsModal = document.getElementById("reviewsModal");
+  reviewsModal.style.display = "block";
+}
+
+document.getElementById("closeReviewsModal").onclick = function () {
+  document.getElementById("reviewsModal").style.display = "none";
+};
