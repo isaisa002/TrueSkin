@@ -301,13 +301,7 @@ function openReviewsPopup(product) {
       reviewItem.innerHTML = `
         <strong>
           ${review.name}
-          ${
-            review.isExpert
-              ? `<span class="expert-badge">
-                  <img src="{{ url_for('static', filename='images/dermato.png') }}" alt="Expert" title="Expert Reviewer" />
-                </span>`
-              : ""
-          }
+          ${review.isExpert ? " ✅" : ""} <!-- Add emoji for experts -->
         </strong> - ${"⭐".repeat(review.rating)}
         <p>${review.comment}</p>
       `;

@@ -16,19 +16,19 @@ products = [
             "Provides deep hydration",
             "Strengthens skin barrier",
             "Safe for fungal acne-prone skin"
-        ], 
+        ],
         "ingredients": [
             "Centella Asiatica Extract",
             "Butylene Glycol",
             "Betaine",
             "Sodium Hyaluronate"
         ],
-         "reviews" : [
-            {"name" : "Anna", "rating": 5, "comment": "I recently added a centella serum to my skincare routine, and it’s been a game-changer for my sensitive skin. The scent is light and natural, making it pleasant to use without any overpowering fragrance. It’s easy to use and it absorbs quickly." },
-            {"name" : "Rebecca", "rating" : 4, "comment":"I can say that this works for sensitive, oily, acne prone skin, and also to other types. Those particularly are my skin type, and this ampoule worked wonders on my face. " },
-            {"name" : "Meagan", "rating" : 4, "comment": "Received this product 2 days ago. My makeup that evening was better, my face felt so much better and after that nighttime facial cleanse that same night, I am not gonna lie, my skin looked so clean and shiny & not in an oily way"},
-            {"name" : "Jessica", "rating" : 2, "comment": "Madagascar Centella Ampoule is praised for its calming, hydrating, and anti-inflammatory benefits. However, the ingredients list is very simple for its price. Others products offer more for less."}
-
+        "reviews": [
+            {"name": "Anna", "rating": 5, "comment": "I recently added a centella serum to my skincare routine, and it’s been a game-changer for my sensitive skin. The scent is light and natural, making it pleasant to use without any overpowering fragrance. It’s easy to use and it absorbs quickly."},
+            {"name": "Rebecca", "rating": 4, "comment": "I can say that this works for sensitive, oily, acne prone skin, and also to other types. Those particularly are my skin type, and this ampoule worked wonders on my face."},
+            {"name": "Meagan", "rating": 4, "comment": "Received this product 2 days ago. My makeup that evening was better, my face felt so much better and after that nighttime facial cleanse that same night, I am not gonna lie, my skin looked so clean and shiny & not in an oily way"},
+            {"name": "Jessica", "rating": 2, "comment": "Madagascar Centella Ampoule is praised for its calming, hydrating, and anti-inflammatory benefits. However, the ingredients list is very simple for its price. Others products offer more for less."},
+            {"name": "Dr. Rachel Ho ✅", "rating": 5, "comment": "Ideal for sensitive, oily skin; pairs well with moisturizers for dry skin."}
         ],
         "transparency": 4
     },
@@ -46,16 +46,17 @@ products = [
             "Provides lasting hydration",
             "Contains soothing oat extract"
         ],
-         "ingredients": [
+        "ingredients": [
             "Avena Sativa (Oat) Kernel Extract",
             "Panthenol",
             "Squalane",
             "Madecassoside"
         ],
-        "reviews" : [
-            {"name" : "Isabelle", "rating": 5, "comment": "So I have VERY sensative combination skin, and I am VERY fungal acne prone, so naturally finding a good moisturizer has been a struggle. But THIS STUFF IS MY HOLY GRAIL!!" },
-            {"name" : "Grace", "rating" : 4, "comment":" Good, but I like the CIca Recovery cream better" },
-            {"name" : "Ashley", "rating" : 2, "comment": " Not the best for REALLY dry skin"}
+        "reviews": [
+            {"name": "Isabelle", "rating": 5, "comment": "So I have VERY sensative combination skin, and I am VERY fungal acne prone, so naturally finding a good moisturizer has been a struggle. But THIS STUFF IS MY HOLY GRAIL!!"},
+            {"name": "Grace", "rating": 4, "comment": "Good, but I like the CIca Recovery cream better"},
+            {"name": "Ashley", "rating": 2, "comment": "Not the best for REALLY dry skin"},
+            {"name": "Dr. Dray ✅", "rating": 5, "comment": "Contains 77% oat seed water; soothes and hydrates sensitive skin effectively."}
         ],
         "transparency": 3
     },
@@ -73,58 +74,48 @@ products = [
             "Improves skin elasticity",
             "Soothes irritated skin"
         ],
-         "ingredients": [
+        "ingredients": [
             "Snail Secretion Filtrate",
             "Sodium Hyaluronate",
             "Arginine",
             "Allantoin"
         ],
-        "reviews" : [
-            {"name" : "Anna", "rating": 3, "comment": "This stuff is a bit sticky. Overall I do like it." },
-            {"name" : "Isabelle", "rating" : 4, "comment":" Really nice product, it leaves my skin glowing for a long period of time" },
-            {"name" : "Grace", "rating" : 5, "comment": " I use this every day and it's made a huge difference in my skin! It's hydrating and my sensitive skin doesn't react to it. My skin glows now and my pores seem smaller. A must have!"}
+        "reviews": [
+            {"name": "Anna", "rating": 3, "comment": "This stuff is a bit sticky. Overall I do like it."},
+            {"name": "Isabelle", "rating": 4, "comment": "Really nice product, it leaves my skin glowing for a long period of time"},
+            {"name": "Grace", "rating": 5, "comment": "I use this every day and it's made a huge difference in my skin! It's hydrating and my sensitive skin doesn't react to it. My skin glows now and my pores seem smaller. A must have!"},
+            {"name": "Dr. Dray ✅", "rating": 5, "comment": "High concentration of snail mucin; excellent for hydration and skin repair."}
         ],
         "transparency": 4
     },
-  {
-    "id": 4,
-    "brand": "Anua",
-    "name": "Heartleaf 77% Soothing Toner",
-    "price": 19.99,
-    "description": "Calming and hydrating toner with 77% Heartleaf extract for sensitive skin",
-    "categories": ["hydration", "soothing", "trending"],
-    "image": "/static/images/3.jpg",
-    "benefits": [
-        "Calms redness and irritation",
-        "Hydrates and soothes skin",
-        "Non-sticky, lightweight texture",
-        "Supports skin's natural barrier"
-    ],
-    "ingredients": [
+    {
+        "id": 4,
+        "brand": "Anua",
+        "name": "Heartleaf 77% Soothing Toner",
+        "price": 19.99,
+        "description": "Calming and hydrating toner with 77% Heartleaf extract for sensitive skin",
+        "categories": ["hydration", "soothing", "trending"],
+        "image": "/static/images/3.jpg",
+        "benefits": [
+            "Calms redness and irritation",
+            "Hydrates and soothes skin",
+            "Non-sticky, lightweight texture",
+            "Supports skin's natural barrier"
+        ],
+        "ingredients": [
             "Houttuynia Cordata Extract",
             "Butylene Glycol",
             "Glycerin",
             "1,2-Hexanediol"
         ],
-    "reviews": [
-        {
-            "name": "Sarah",
-            "rating": 5,
-            "comment": "This toner is a game changer for my sensitive skin! It's so calming and refreshing."
-        },
-        {
-            "name": "Jin",
-            "rating": 4,
-            "comment": "I like the lightweight texture and how quickly it absorbs. Great for layering."
-        },
-        {
-            "name": "Amara",
-            "rating": 5,
-            "comment": "I use this toner daily, and it has significantly reduced redness on my cheeks. Highly recommend!"
-        }
-    ],
-    "transparency": 4
-},
+        "reviews": [
+            {"name": "Sarah", "rating": 5, "comment": "This toner is a game changer for my sensitive skin! It's so calming and refreshing."},
+            {"name": "Jin", "rating": 4, "comment": "I like the lightweight texture and how quickly it absorbs. Great for layering."},
+            {"name": "Amara", "rating": 5, "comment": "I use this toner daily, and it has significantly reduced redness on my cheeks. Highly recommend!"},
+            {"name": "Dr. Rachel Ho ✅", "rating": 5, "comment": "Heartleaf extract effectively soothes and hydrates sensitive skin."}
+        ],
+        "transparency": 4
+    },
     {
     "id": 5,
     "brand": "The Ordinary",
