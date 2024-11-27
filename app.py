@@ -16,6 +16,12 @@ products = [
             "Provides deep hydration",
             "Strengthens skin barrier",
             "Safe for fungal acne-prone skin"
+        ], 
+        "ingredients": [
+            "Centella Asiatica Extract",
+            "Butylene Glycol",
+            "Betaine",
+            "Sodium Hyaluronate"
         ],
          "reviews" : [
             {"name" : "Anna", "rating": 5, "comment": "I recently added a centella serum to my skincare routine, and it’s been a game-changer for my sensitive skin. The scent is light and natural, making it pleasant to use without any overpowering fragrance. It’s easy to use and it absorbs quickly." },
@@ -38,6 +44,12 @@ products = [
             "Provides lasting hydration",
             "Contains soothing oat extract"
         ],
+         "ingredients": [
+            "Avena Sativa (Oat) Kernel Extract",
+            "Panthenol",
+            "Squalane",
+            "Madecassoside"
+        ],
         "reviews" : [
             {"name" : "Isabelle", "rating": 5, "comment": "So I have VERY sensative combination skin, and I am VERY fungal acne prone, so naturally finding a good moisturizer has been a struggle. But THIS STUFF IS MY HOLY GRAIL!!" },
             {"name" : "Grace", "rating" : 4, "comment":" Good, but I like the CIca Recovery cream better" },
@@ -58,6 +70,12 @@ products = [
             "Helps repair skin barrier",
             "Improves skin elasticity",
             "Soothes irritated skin"
+        ],
+         "ingredients": [
+            "Snail Secretion Filtrate",
+            "Sodium Hyaluronate",
+            "Arginine",
+            "Allantoin"
         ],
         "reviews" : [
             {"name" : "Anna", "rating": 3, "comment": "This stuff is a bit sticky. Overall I do like it." },
@@ -80,6 +98,12 @@ products = [
         "Non-sticky, lightweight texture",
         "Supports skin's natural barrier"
     ],
+    "ingredients": [
+            "Houttuynia Cordata Extract",
+            "Butylene Glycol",
+            "Glycerin",
+            "1,2-Hexanediol"
+        ],
     "reviews": [
         {
             "name": "Sarah",
@@ -103,7 +127,7 @@ products = [
     "id": 5,
     "brand": "The Ordinary",
     "name": "Niacinamide 10% + Zinc 1%",
-    "price": 6.50,
+    "price": 12.50,
     "description": "High-strength vitamin and mineral formula to reduce the appearance of blemishes and congestion",
     "categories": ["oil_control", "brightening", "trending"],
     "image": "/static/images/4.jpg",
@@ -113,6 +137,12 @@ products = [
         "Reduces redness and blemishes",
         "Brightens skin tone"
     ],
+     "ingredients": [
+            "Niacinamide",
+            "Zinc PCA",
+            "Pentylene Glycol",
+            "Tamarindus Indica Seed Gum"
+        ],
     "reviews": [
         {
             "name": "Emma",
@@ -146,6 +176,12 @@ products = [
         "No-rinse formula",
         "Maintains skin's natural balance"
     ],
+     "ingredients": [
+            "Water",
+            "PEG-6 Caprylic/Capric Glycerides",
+            "Cucumber Fruit Extract",
+            "Mannitol"
+        ],
     "reviews": [
         {
             "name": "Alice",
@@ -178,6 +214,12 @@ products = [
         "Hydrates and nourishes",
         "Improves skin texture"
     ],
+      "ingredients": [
+            "Propolis Extract",
+            "Niacinamide",
+            "Panthenol",
+            "Sodium Hyaluronate"
+        ],
     "reviews": [
         {
             "name": "Evelyn",
@@ -211,6 +253,12 @@ products = [
         "Improves skin texture",
         "Rich in antioxidants"
     ],
+    "ingredients": [
+            "Mugwort Extract",
+            "Glycerin",
+            "Butylene Glycol",
+            "Betaine"
+        ],
     "reviews": [
         {
             "name": "Olivia",
@@ -231,7 +279,7 @@ products = [
     "transparency": 2
 },
       {
-    "id": 7,
+    "id": 9,
     "brand": "La Roche-Posay",
     "name": "Cicaplast Baume B5",
     "price": 14.99,
@@ -244,6 +292,12 @@ products = [
         "Non-greasy and fast-absorbing",
         "Suitable for the whole family, including babies"
     ],
+       "ingredients": [
+            "Panthenol",
+            "Shea Butter",
+            "Madecassoside",
+            "Zinc Gluconate"
+        ],
     "reviews": [
         {
             "name": "James",
@@ -262,7 +316,124 @@ products = [
         }
     ],
     "transparency": 3
+}, {
+    "id": 10,
+    "brand": "Glow Recipe",
+    "name": "Watermelon Glow PHA + BHA Toner",
+    "price": 44.50,
+    "description": "A gentle, hydrating toner with PHA and BHA to refine pores and smooth skin texture",
+    "categories": ["hydration", "exfoliation", "trending"],
+    "image": "/static/images/10.jpg",
+    "benefits": [
+        "Refines pores",
+        "Gently exfoliates dead skin cells",
+        "Hydrates and plumps the skin",
+        "Improves skin texture"
+    ],
+      "ingredients": [
+            "Watermelon Extract",
+            "Polyhydroxy Acid (PHA)",
+            "Beta Hydroxy Acid (BHA)",
+            "Hyaluronic Acid"
+        ],
+    "reviews": [
+        {
+            "name": "Lila",
+            "rating": 5,
+            "comment": "Smells amazing and leaves my skin glowing! Perfect for gentle exfoliation."
+        },
+        {
+            "name": "Adrian",
+            "rating": 4,
+            "comment": "Really hydrates my skin, but takes some time to show results."
+        },
+        {
+            "name": "Claire",
+            "rating": 5,
+            "comment": "My skin feels so smooth and fresh! Great for daily use."
+        }
+    ],
+    "transparency": 4
+}, {
+    "id": 11,
+    "brand": "Tatcha",
+    "name": "The Water Cream",
+    "price": 31.00,
+    "description": "A refreshing, oil-free moisturizer that provides lightweight hydration while improving skin's texture and clarity",
+    "categories": ["hydration", "luxury", "oil_control"],
+    "image": "/static/images/11.jpg",
+    "benefits": [
+        "Provides lightweight hydration",
+        "Refines and smooths skin texture",
+        "Non-greasy, oil-free formula",
+        "Leaves skin radiant and balanced"
+    ],
+    "ingredients": [
+            "Japanese Purple Rice",
+            "Hyaluronic Acid",
+            "Okinawa Algae Blend",
+            "Panax Ginseng Root Extract"
+        ],
+    "reviews": [
+        {
+            "name": "Mia",
+            "rating": 5,
+            "comment": "Love this cream! It's lightweight but super hydrating. Perfect for summer."
+        },
+        {
+            "name": "Jack",
+            "rating": 4,
+            "comment": "Feels great on my skin but a bit pricey for everyday use."
+        },
+        {
+            "name": "Emma",
+            "rating": 5,
+            "comment": "Keeps my skin hydrated and clear without making it oily."
+        }
+    ],
+    "transparency": 3
+}, {
+    "id": 12,
+    "brand": "Paula's Choice",
+    "name": "Skin Perfecting 2% BHA Liquid Exfoliant",
+    "price": 32.00,
+    "description": "A cult-favorite leave-on exfoliant with salicylic acid to unclog pores, smooth wrinkles, and even skin tone",
+    "categories": ["exfoliation", "acne_control", "sensitive_skin"],
+    "image": "/static/images/12.jpg",
+    "benefits": [
+        "Unclogs and minimizes pores",
+        "Smooths fine lines and wrinkles",
+        "Evens skin tone",
+        "Gentle enough for daily use"
+    ],
+     "ingredients": [
+            "Salicylic Acid",
+            "Green Tea Extract",
+            "Methylpropanediol",
+            "Butylene Glycol"
+        ],
+    "reviews": [
+        {
+            "name": "Noah",
+            "rating": 5,
+            "comment": "Works wonders for my blackheads! My skin looks much clearer now."
+        },
+        {
+            "name": "Sophia",
+            "rating": 5,
+            "comment": "This is a game changer for acne-prone skin. My complexion has improved so much."
+        },
+        {
+            "name": "Ethan",
+            "rating": 4,
+            "comment": "Effective but slightly drying. Make sure to use a moisturizer after!"
+        }
+    ],
+    "transparency": 2
 }
+
+
+
 
     
 ]

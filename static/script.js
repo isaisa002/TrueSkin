@@ -131,6 +131,11 @@ function openProductModal(product) {
     ? product.benefits.map((benefit) => `<li>${benefit}</li>`).join("")
     : "<li>Product benefits not available</li>";
 
+  //Update ingredients
+  document.getElementById("modalIngredients").innerHTML = product.ingredients
+    ? product.ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")
+    : "<li>Product ingredients not available</li>";
+
   // Show modal
   modal.style.display = "block";
   document.body.style.overflow = "hidden"; // Prevent background scrolling
@@ -176,6 +181,15 @@ function openProductModal(product) {
     const benefitItem = document.createElement("li");
     benefitItem.textContent = benefit;
     benefits_container.appendChild(benefitItem);
+  });
+
+  //ingredients
+  const ingredients_container = document.getElementById("modalIngredients");
+  ingredients_container.innerHTML = ""; // Clear existing benefits
+  product.ingredients.forEach((ingredient) => {
+    const ingredientItem = document.createElement("li");
+    ingredientItem.textContent = ingredient;
+    ingredients_container.appendChild(ingredientItem);
   });
 
   //transparency rating

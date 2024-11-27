@@ -87,7 +87,7 @@ header {
 .progress-btn {
   background-color: var(--color-tertiary);
   color: white;
-  padding: 10px 20px;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -750,22 +750,6 @@ header {
   cursor: pointer;
 }
 
-.compare-btn {
-  background-color: var(--color-tertiary);
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 50px;
-  transition: background-color 0.3s;
-  margin-right: 10px;
-}
-
-.compare-btn:hover {
-  background-color: var(--color-primary);
-}
 .ingredient-btn {
   background-color: var(--color-tertiary);
   color: white;
