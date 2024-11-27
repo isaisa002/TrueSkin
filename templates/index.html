@@ -11,10 +11,20 @@
   </head>
   <body>
     <header>
+      <div class="back-button">
+        <a href="/" class="back-btn">Back</a>
+      </div>
       <div class="header-content">
         <div class="logo">
-          <h1>TrueSkin</h1>
-          <p>Unveiling the Truth in Skincare</p>
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Logo"
+            class="logo-img"
+          />
+          <div class="title-text">
+            <h1>TrueSkin</h1>
+            <p>Unveiling the Truth in Skincare</p>
+          </div>
         </div>
         <div class="search-container" style="margin-bottom: 20px; justify-content: center;">
           <a href="{{ url_for('progress_tracking') }}" class="progress-btn">
